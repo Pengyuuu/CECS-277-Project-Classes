@@ -14,12 +14,16 @@ public class Tester {
 
         while (goMachine) {
 
-            System.out.println((count+=1) + "(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
+            System.out.println("(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
 
             String choice = scan.nextLine();
 
             if (choice.equals("s") || choice.equals("S")) {
-                box.showProducts();
+
+                for (int i = 0; i < box.getInventorySize(); i++){
+
+                    System.out.println((i + 1) + ". " + box.getProduct(i));
+                }
 
             }
             else if (choice.equals("i") || choice.equals("I")) {
@@ -28,13 +32,13 @@ public class Tester {
 
                 choice = scan.nextLine();
 
-                box.insertCoins(choice);
+                box.insertCoin(choice);
 
             }
 
             else if (choice.equals("b") || choice.equals("B")){
 
-                if (box.getInventory() == null){
+                if (box.getInventorySize() == 0){
 
                     System.out.println("No items in machine, please add products");
                 }
@@ -51,7 +55,7 @@ public class Tester {
 
                         System.out.println("Purchased: " + box.getProduct(buying));
 
-                        box.returnBalance(box.getProduct(buying));
+                        box.buyItem(box.getProduct(buying));
                     }
                     else{
 
@@ -66,10 +70,10 @@ public class Tester {
                 System.out.print("Description: ");
                 String desc = scan.nextLine();
 
-                System.out.print("\nPrice: ");
+                System.out.print("Price: ");
                 double price = Double.parseDouble(scan.nextLine());
 
-                System.out.print("\nQuantity: ");
+                System.out.print("Quantity: ");
                 int quantity = Integer.parseInt(scan.nextLine());
 
                 box.addProduct(new Product(desc, price, quantity));

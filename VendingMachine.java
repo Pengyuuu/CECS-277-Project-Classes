@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class VendingMachine {
 
-    private double balance;
+    private Coin balance;
     private ArrayList<Product> inventory;
 
     public VendingMachine(){
         inventory = new ArrayList<>();
-        balance = 0.0;
+        balance = new Coin();
     }
 
     public void addProduct(Product item){
@@ -30,54 +30,25 @@ public class VendingMachine {
         return inventory.size();
     }
 
+    public void insertCoin(String n){
+
+        balance.setBalance(n);
+    }
+
     public double getBalance(){
 
-        return balance;
+        return balance.getBalance();
     }
 
     public void setBalance(){
 
-        balance = 0.0;
+        balance.setBalance();
     }
 
-    public void setBalance(double n){
 
-        balance += n;
-    }
+    public void buyItem(Product n){
 
-    public void returnBalance(Product n){
-
-        balance -= n.getPrice();
-    }
-
-    public void showProducts() {
-        if (inventory.size() != 0) {
-            for (int i = 0; i < inventory.size(); i++) {
-                System.out.println(inventory.get(i));
-            }
-        }
-        else if (inventory.size() == 0){
-            System.out.println("No products.");
-        }
-
-    }
-
-    public void insertCoins(String choice) {
-        if (choice.equals("A") || choice.equals("a")) {
-            this.setBalance(0.05);
-        }
-        else if (choice.equals("B") || choice.equals("b")) {
-            this.setBalance(0.10);
-        }
-        else if (choice.equals("C") || choice.equals("c")) {
-
-            this.setBalance(0.25);
-        }
-        else if (choice.equals("D") || choice.equals("d")) {
-
-            this.setBalance(1.000);
-        }
-
+        balance.buyItem(n.getPrice());
     }
 
     @Override
