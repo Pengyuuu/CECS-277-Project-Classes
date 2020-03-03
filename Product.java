@@ -16,6 +16,16 @@ public class Product{
         return price;
     }
 
+    public void setPrice(double n){
+
+        price = n;
+    }
+
+    public int getQuantity(){
+
+        return quantity;
+    }
+
     public void setQuantity(){
 
         quantity -= 1;

@@ -1,13 +1,10 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Tester {
 
     public static void main(String[] args) {
 
-        ArrayList<Product> items = new ArrayList<>();
-
-        Balance bal = new Balance();
+        VendingMachine box = new VendingMachine();
 
         Scanner scan = new Scanner(System.in);
 
@@ -21,9 +18,9 @@ public class Tester {
 
             if (choice.equals("s") || choice.equals("S")) {
 
-                for (int i = 0; i < items.size(); i++) {
+                for (int i = 0; i < box.getInventorySize(); i++) {
 
-                    System.out.println(items.get(i));
+                    System.out.println(box.getProduct(i));
                 }
             }
             else if (choice.equals("i") || choice.equals("I")) {
@@ -34,48 +31,48 @@ public class Tester {
 
                 if (choice.equals("A") || choice.equals("a")) {
 
-                    bal.setBal(0.05);
+                    box.setBalance(0.05);
                 }
                 else if (choice.equals("B") || choice.equals("b")) {
 
-                    bal.setBal(0.10);
+                    box.setBalance(0.10);
                 }
                 else if (choice.equals("C") || choice.equals("c")) {
 
-                    bal.setBal(0.25);
+                    box.setBalance(0.25);
                 }
                 else if (choice.equals("D") || choice.equals("d")) {
 
-                    bal.setBal(1.000);
+                    box.setBalance(1.000);
                 }
             }
 
             else if (choice.equals("b") || choice.equals("B")){
 
-                if (items == null){
+                if (box.getInventory() == null){
 
                     System.out.println("No items in machine, please add products");
                 }
                 else{
 
-                    for (int i = 0; i < items.size(); i++){
+                    for (int i = 0; i < box.getInventorySize(); i++){
 
-                        System.out.println((i + 1) + ". " + items.get(i));
+                        System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
 
                     int buying = scan.nextInt();
 
-                    if (items.get(buying).getPrice() <= bal.getBal()){
+                    if (box.getProduct(buying).getPrice() <= box.getBalance()){
 
-                        System.out.println("Purchased: " + items.get(buying));
+                        System.out.println("Purchased: " + box.getProduct(buying));
 
-                        items.get(buying).setQuantity();
+                        box.getProduct(buying).setQuantity();
                     }
                     else{
 
                         System.out.println("Insufficient funds");
 
-                        bal.setBal();
+                        box.setBalance();
                     }
                 }
             }
@@ -93,16 +90,14 @@ public class Tester {
 
                 int quantity = scan.nextInt();
 
-                Product addItem = new Product(desc, price, quantity);
-
-                items.add(addItem);
+                box.addProduct(new Product(desc, price, quantity));
             }
 
             else if (choice.equals("R") || choice.equals("r")){
 
-                System.out.println("Removed: " + bal.getBal());
+                System.out.println("Removed: " + box.getBalance());
 
-                bal.setBal();
+                box.setBalance();
             }
 
             else if (choice.equals("Q") || choice.equals("q")){
