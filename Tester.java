@@ -90,9 +90,9 @@ public class Tester {
 
                 System.out.print("Quantity: ");
 
-                int quantity = scan.nextInt();
+                //int quantity = scan.nextInt();
 
-                box.addProduct(new Product(desc, price, quantity));
+                box.addProduct(new Product(desc, price, 10));
             }
 
             else if (choice.equals("R") || choice.equals("r")){
