@@ -1,4 +1,4 @@
-public class Product extends VendingMachine {
+public class Product{
 
     private String name;
     private double price;
@@ -6,8 +6,14 @@ public class Product extends VendingMachine {
 
     public Product(String s, double p, int q){
 
-        super(s);
+        name = s;
         price = p;
         quantity = q;
+    }
+
+    @Override
+    public String toString(){
+
+        return name + " @ " + price;
     }
 }
