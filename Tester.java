@@ -43,7 +43,7 @@ public class Tester {
                 }
                 else if (choice.equals("D") || choice.equals("d")) {
 
-                    box.setBalance(1.000);
+                    box.setBalance(1.00);
                 }
             }
 
@@ -60,13 +60,15 @@ public class Tester {
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
 
-                    int buying = scan.nextInt();
+                    int buying = scan.nextInt() - 1;
 
                     if (box.getProduct(buying).getPrice() <= box.getBalance()){
 
                         System.out.println("Purchased: " + box.getProduct(buying));
 
                         box.getProduct(buying).setQuantity();
+
+                        box.checkInventory();
                     }
                     else{
 
@@ -82,11 +84,11 @@ public class Tester {
 
                 String desc = scan.nextLine();
 
-                System.out.print("\nPrice: ");
+                System.out.print("Price: ");
 
                 double price = scan.nextDouble();
 
-                System.out.print("\nQuantity: ");
+                System.out.print("Quantity: ");
 
                 int quantity = scan.nextInt();
 
@@ -104,6 +106,8 @@ public class Tester {
 
                 goMachine = false;
             }
+
+            //scan.nextLine();
         }
     }
 }

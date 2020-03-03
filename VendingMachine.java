@@ -8,6 +8,7 @@ public class VendingMachine {
     public VendingMachine(){
 
         balance = 0.0;
+        inventory = new ArrayList<>();
     }
 
     public void addProduct(Product item){
@@ -23,6 +24,17 @@ public class VendingMachine {
     public Product getProduct(int i){
 
         return inventory.get(i);
+    }
+
+    public void checkInventory(){
+
+        for (int i = 0; i < inventory.size(); i++){
+
+            if (inventory.get(i).getQuantity() == 0){
+
+                inventory.remove(i);
+            }
+        }
     }
 
     public int getInventorySize(){
