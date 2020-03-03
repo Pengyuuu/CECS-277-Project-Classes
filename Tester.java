@@ -45,7 +45,7 @@ public class Tester {
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
 
-                    int buying = scan.nextInt();
+                    int buying = scan.nextInt() - 1;
 
                     if (box.getProduct(buying).getPrice() <= box.getBalance()){
 
@@ -82,7 +82,7 @@ public class Tester {
             }
 
             else if (choice.equals("Q") || choice.equals("q")){
-
+                System.out.println(box.toString());
                 goMachine = false;
             }
         }

@@ -50,7 +50,6 @@ public class Product extends VendingMachine{
 
     @Override
     public String toString(){
-
         return name + " @ " + price;
     }
 }

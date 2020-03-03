@@ -46,7 +46,6 @@ public class VendingMachine {
     }
 
     public void showProducts() {
-        System.out.println(inventory.size());
         if (inventory.size() != 0) {
             for (int i = 0; i < inventory.size(); i++) {
                 System.out.println(inventory.get(i));
@@ -60,7 +59,6 @@ public class VendingMachine {
 
     public void insertCoins(String choice) {
         if (choice.equals("A") || choice.equals("a")) {
-
             this.setBalance(0.05);
         }
         else if (choice.equals("B") || choice.equals("b")) {
@@ -75,6 +73,17 @@ public class VendingMachine {
             this.setBalance(1.000);
         }
 
-
     }
+
+    @Override
+    public String toString () {
+        String stock = "";
+        for (int i = 0; i < inventory.size(); i++) {
+            Product p = inventory.get(i);
+            stock += p.toString() + '\n';
+
+        }
+        return stock;
+    }
+
 }
