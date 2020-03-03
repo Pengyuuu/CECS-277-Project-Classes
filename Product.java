@@ -11,6 +11,16 @@ public class Product{
         quantity = q;
     }
 
+    public double getPrice(){
+
+        return price;
+    }
+
+    public void setQuantity(){
+
+        quantity -= 1;
+    }
+
     @Override
     public String toString(){
 

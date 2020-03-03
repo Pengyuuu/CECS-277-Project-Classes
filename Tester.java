@@ -11,13 +11,13 @@ public class Tester {
 
         Scanner scan = new Scanner(System.in);
 
-        String choice = "";
+        boolean goMachine = true;
 
-        while (choice != "Q" || choice != "q") {
+        while (goMachine) {
 
             System.out.println("(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
 
-            choice = scan.nextLine();
+            String choice = scan.nextLine();
 
             if (choice.equals("s") || choice.equals("S")) {
 
@@ -54,7 +54,29 @@ public class Tester {
 
                 if (items == null){
 
-                    System.out.println("")
+                    System.out.println("No items in machine, please add products");
+                }
+                else{
+
+                    for (int i = 0; i < items.size(); i++){
+
+                        System.out.println((i + 1) + ". " + items.get(i));
+                    }
+
+                    int buying = scan.nextInt();
+
+                    if (items.get(buying).getPrice() <= bal.getBal()){
+
+                        System.out.println("Purchased: " + items.get(buying));
+
+                        items.get(buying).setQuantity();
+                    }
+                    else{
+
+                        System.out.println("Insufficient funds");
+
+                        bal.setBal();
+                    }
                 }
             }
             else if (choice.equals("a") || choice.equals("A")) {
@@ -63,17 +85,29 @@ public class Tester {
 
                 String desc = scan.nextLine();
 
-                System.out.print("\n Price: ");
+                System.out.print("\nPrice: ");
 
                 double price = scan.nextDouble();
 
-                System.out.print("\n Quantity: ");
+                System.out.print("\nQuantity: ");
 
                 int quantity = scan.nextInt();
 
                 Product addItem = new Product(desc, price, quantity);
 
                 items.add(addItem);
+            }
+
+            else if (choice.equals("R") || choice.equals("r")){
+
+                System.out.println("Removed: " + bal.getBal());
+
+                bal.setBal();
+            }
+
+            else if (choice.equals("Q") || choice.equals("q")){
+
+                goMachine = false;
             }
         }
     }
