@@ -51,7 +51,7 @@ public class Tester {
 
                         System.out.println("Purchased: " + box.getProduct(buying));
 
-                        box.getProduct(buying).setQuantity();
+                        box.returnBalance(box.getProduct(buying));
                     }
                     else{
 

@@ -45,6 +45,11 @@ public class VendingMachine {
         balance += n;
     }
 
+    public void returnBalance(Product n){
+
+        balance -= n.getPrice();
+    }
+
     public void showProducts() {
         if (inventory.size() != 0) {
             for (int i = 0; i < inventory.size(); i++) {
