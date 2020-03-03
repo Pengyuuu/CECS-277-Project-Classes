@@ -6,7 +6,7 @@ public class VendingMachine {
     private ArrayList<Product> inventory;
 
     public VendingMachine(){
-
+        inventory = new ArrayList<>();
         balance = 0.0;
     }
 
@@ -43,5 +43,38 @@ public class VendingMachine {
     public void setBalance(double n){
 
         balance += n;
+    }
+
+    public void showProducts() {
+        System.out.println(inventory.size());
+        if (inventory.size() != 0) {
+            for (int i = 0; i < inventory.size(); i++) {
+                System.out.println(inventory.get(i));
+            }
+        }
+        else if (inventory.size() == 0){
+            System.out.println("No products.");
+        }
+
+    }
+
+    public void insertCoins(String choice) {
+        if (choice.equals("A") || choice.equals("a")) {
+
+            this.setBalance(0.05);
+        }
+        else if (choice.equals("B") || choice.equals("b")) {
+            this.setBalance(0.10);
+        }
+        else if (choice.equals("C") || choice.equals("c")) {
+
+            this.setBalance(0.25);
+        }
+        else if (choice.equals("D") || choice.equals("d")) {
+
+            this.setBalance(1.000);
+        }
+
+
     }
 }

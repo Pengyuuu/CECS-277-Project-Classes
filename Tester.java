@@ -8,20 +8,19 @@ public class Tester {
 
         Scanner scan = new Scanner(System.in);
 
+
         boolean goMachine = true;
+        int count = 0;
 
         while (goMachine) {
 
-            System.out.println("(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
+            System.out.println((count+=1) + "(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
 
             String choice = scan.nextLine();
 
             if (choice.equals("s") || choice.equals("S")) {
+                box.showProducts();
 
-                for (int i = 0; i < box.getInventorySize(); i++) {
-
-                    System.out.println(box.getProduct(i));
-                }
             }
             else if (choice.equals("i") || choice.equals("I")) {
 
@@ -29,22 +28,8 @@ public class Tester {
 
                 choice = scan.nextLine();
 
-                if (choice.equals("A") || choice.equals("a")) {
+                box.insertCoins(choice);
 
-                    box.setBalance(0.05);
-                }
-                else if (choice.equals("B") || choice.equals("b")) {
-
-                    box.setBalance(0.10);
-                }
-                else if (choice.equals("C") || choice.equals("c")) {
-
-                    box.setBalance(0.25);
-                }
-                else if (choice.equals("D") || choice.equals("d")) {
-
-                    box.setBalance(1.000);
-                }
             }
 
             else if (choice.equals("b") || choice.equals("B")){
@@ -79,24 +64,20 @@ public class Tester {
             else if (choice.equals("a") || choice.equals("A")) {
 
                 System.out.print("Description: ");
-
                 String desc = scan.nextLine();
 
                 System.out.print("\nPrice: ");
-
-                double price = scan.nextDouble();
+                double price = Double.parseDouble(scan.nextLine());
 
                 System.out.print("\nQuantity: ");
-
-                int quantity = scan.nextInt();
+                int quantity = Integer.parseInt(scan.nextLine());
 
                 box.addProduct(new Product(desc, price, quantity));
+
             }
 
             else if (choice.equals("R") || choice.equals("r")){
-
                 System.out.println("Removed: " + box.getBalance());
-
                 box.setBalance();
             }
 
