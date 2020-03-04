@@ -46,9 +46,9 @@ public class VendingMachine {
     }
 
 
-    public void buyItem(Product n){
+    public boolean buyItem(Product n){
 
-        balance.buyItem(n.getPrice());
+        return balance.buyItem(n.getPrice());
     }
 
     @Override

@@ -10,7 +10,6 @@ public class Tester {
 
 
         boolean goMachine = true;
-        int count = 0;
 
         while (goMachine) {
 
@@ -20,9 +19,17 @@ public class Tester {
 
             if (choice.equals("s") || choice.equals("S")) {
 
-                for (int i = 0; i < box.getInventorySize(); i++){
+                if (box.getInventorySize() == 0){
 
-                    System.out.println((i + 1) + ". " + box.getProduct(i));
+                    System.out.println("No items in machine, please add products. ");
+                }
+
+                else {
+
+                    for (int i = 0; i < box.getInventorySize(); i++) {
+
+                        System.out.println((i + 1) + ". " + box.getProduct(i));
+                    }
                 }
 
             }
@@ -40,28 +47,29 @@ public class Tester {
 
                 if (box.getInventorySize() == 0){
 
-                    System.out.println("No items in machine, please add products");
+                    System.out.println("No items in machine, please add products. ");
                 }
-                else{
+                else {
 
                     for (int i = 0; i < box.getInventorySize(); i++){
 
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
 
-                    int buying = scan.nextInt() - 1;
+                    int buying = Integer.parseInt(scan.nextLine()) - 1;
 
-                    if (box.getProduct(buying).getPrice() <= box.getBalance()){
+                    if (box.buyItem(box.getProduct(buying)) == true){
 
                         System.out.println("Purchased: " + box.getProduct(buying));
 
                         box.buyItem(box.getProduct(buying));
+
                     }
                     else{
 
-                        System.out.println("Insufficient funds");
+                        System.out.println("Insufficient funds. ");
 
-                        box.setBalance();
+                        //box.setBalance();
                     }
                 }
             }
@@ -81,6 +89,7 @@ public class Tester {
             }
 
             else if (choice.equals("R") || choice.equals("r")){
+                //if (box.buyItem())
                 System.out.println("Removed: " + box.getBalance());
                 box.setBalance();
             }
