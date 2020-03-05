@@ -19,12 +19,10 @@ public class Tester {
             if (choice.equals("s") || choice.equals("S")) {
 
                 if (box.showInventory() == false){
-
                     System.out.println("No items in machine, please add products. ");
                 }
 
                 else {
-
                     for (int i = 0; i < box.getInventorySize(); i++) {
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
@@ -42,7 +40,7 @@ public class Tester {
 
             else if (choice.equals("b") || choice.equals("B")){
 
-                if (box.getInventorySize() == 0){
+                if (box.showInventory() == false){
                     System.out.println("No items in machine, please add products. ");
                 }
 
@@ -56,7 +54,6 @@ public class Tester {
                     if (box.buyItem(box.getProduct(buying))){
 
                         System.out.println("Purchased: " + box.getProduct(buying));
-                        box.buyItem(box.getProduct(buying));
 
                     }
                     else{

@@ -31,12 +31,12 @@ public class Product extends VendingMachine{
 
     public int getQuantity(){
 
-        return quantity;
+        return this.quantity;
     }
 
     public void setQuantity(){
 
-        quantity --;
+        this.quantity -= 1;
     }
 
     public double getPrice(){
