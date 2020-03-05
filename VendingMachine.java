@@ -1,23 +1,26 @@
-/** @authors Eric Truong, Erina Lara
- * Date: March 3, 2020
- * Purpose: Program creates a vending machine, using a class of coins and a subclass of product.
- */
-
 import java.util.ArrayList;
 
 public class VendingMachine {
 
     private Coin balance;
     private ArrayList<Product> inventory;
+    private boolean validPurchase;
+
 
     public VendingMachine(){
+
         inventory = new ArrayList<>();
         balance = new Coin();
+        validPurchase = false;
     }
 
     public void addProduct(Product item){
 
         inventory.add(item);
+    }
+
+    public void removeProduct(Product item) {
+        inventory.remove(item);
     }
 
     public ArrayList<Product> getInventory(){
@@ -51,9 +54,40 @@ public class VendingMachine {
     }
 
 
-    public void buyItem(Product n){
+    public boolean buyItem(Product n){
 
-        balance.buyItem(n.getPrice());
+        if (balance.buyItem(n.getPrice()) == true & n.getQuantity() != 0) {
+            validPurchase = true;
+            n.setQuantity();
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public double removeBalance() {
+
+        if (validPurchase) {
+            validPurchase = false;
+            return balance.getBalance();
+        }
+        else {
+            return 0.0;
+        }
+    }
+
+    public boolean showInventory() {
+
+        for (int k = 0; k < this.getInventorySize(); k++) {
+            if (this.getProduct(k).getQuantity() == 0) {
+                this.removeProduct(this.getProduct(k));
+                k --;
+            }
+        }
+
+        return (this.getInventorySize() != 0);
     }
 
     @Override
