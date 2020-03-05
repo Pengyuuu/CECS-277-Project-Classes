@@ -14,7 +14,6 @@ public class Tester {
         while (goMachine) {
 
             System.out.println("(S)how products (I)nsert coins (B)uy (A)dd product (R)emove coins (Q)uit");
-
             String choice = scan.nextLine();
 
             if (choice.equals("s") || choice.equals("S")) {
@@ -37,7 +36,6 @@ public class Tester {
                 System.out.println("A) nickel @ 0.05 \nB) dime @ 0.10 \nC) quarter @ 0.25 \nD) dollar @ 1.00");
 
                 choice = scan.nextLine();
-
                 box.insertCoin(choice);
 
             }
@@ -45,9 +43,9 @@ public class Tester {
             else if (choice.equals("b") || choice.equals("B")){
 
                 if (box.getInventorySize() == 0){
-
                     System.out.println("No items in machine, please add products. ");
                 }
+
                 else {
 
                     for (int i = 0; i < box.getInventorySize(); i++){
@@ -55,18 +53,14 @@ public class Tester {
                     }
 
                     int buying = Integer.parseInt(scan.nextLine()) - 1;
-
-                    if (box.buyItem(box.getProduct(buying)) == true){
+                    if (box.buyItem(box.getProduct(buying))){
 
                         System.out.println("Purchased: " + box.getProduct(buying));
-
                         box.buyItem(box.getProduct(buying));
 
                     }
                     else{
-
                         System.out.println("Insufficient funds. ");
-
                     }
                 }
             }
@@ -88,11 +82,11 @@ public class Tester {
             else if (choice.equals("R") || choice.equals("r")){
 
                 double removeCoins = box.removeBalance();
-
                 if (removeCoins != 0.0) {
                     System.out.println("Removed: $" + removeCoins);
                     box.setBalance();
                 }
+
                 else {
                     System.out.println("Removed: $" + removeCoins);
                 }
