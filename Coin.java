@@ -48,12 +48,11 @@ public class Coin {
         }
     }
 
-    public boolean buyItem(double price){
+    public void buyItem(double price){
 
-        return balance >= price;
+        balance -= price;
     }
 
-    @Override
     public String toString(){
 
         return "Balance: " + balance;

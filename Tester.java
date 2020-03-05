@@ -1,3 +1,8 @@
+/** @authors Eric Truong, Erina Lara
+ * Date: March 3, 2020
+ * Purpose: Program creates a vending machine, using a class of coins and a subclass of product.
+ */
+
 import java.util.Scanner;
 
 public class Tester {
