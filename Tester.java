@@ -5,9 +5,7 @@ public class Tester {
     public static void main(String[] args) {
 
         VendingMachine box = new VendingMachine();
-
         Scanner scan = new Scanner(System.in);
-
 
         boolean goMachine = true;
 
