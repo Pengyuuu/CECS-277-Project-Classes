@@ -50,19 +50,19 @@ public class Coin {
             balance += NICKLE;
         }
 
-        // String b represents first choice for nickel
+        // String b represents first choice for dime
         else if (n.equals("b") || n.equals("B")){
 
             balance += DIME;
         }
 
-        // String c represents first choice for nickel
+        // String c represents first choice for quarter
         else if (n.equals("c") || n.equals("C")){
 
             balance += QUARTER;
         }
 
-        // String d represents first choice for nickel
+        // String d represents first choice for dollar
         else if (n.equals("d") || n.equals("D")){
 
             balance += DOLLAR;

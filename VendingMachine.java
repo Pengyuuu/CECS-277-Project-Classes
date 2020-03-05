@@ -121,7 +121,7 @@ public class VendingMachine {
      */
     public boolean showInventory() {
 
-        // removes product with 0 quantity
+        // removes products of 0 quantity
         for (int k = 0; k < this.getInventorySize(); k++) {
 
             if (this.getProduct(k).getQuantity() == 0) {
