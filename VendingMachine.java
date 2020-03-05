@@ -1,6 +1,6 @@
 /** @authors Eric Truong, Erina Lara
  * Date: March 3, 2020
- * Purpose: Program creates a vending machine, using a class of coins and a subclass of product.
+ * Purpose: Program creates a vending machine, using a class of coins and a class of product.
  */
 
 import java.util.ArrayList;
@@ -10,6 +10,9 @@ public class VendingMachine {
     /** total balance of all coins inserted */
     private Coin balance;
 
+    /** vending machine balance after an item is bought */
+    private double vending_balance;
+
     /** inventory of products in vending machine */
     private ArrayList<Product> inventory;
 
@@ -17,12 +20,13 @@ public class VendingMachine {
     private boolean validPurchase;
 
 
-    /** Default constructor, initializes inventory, balance, and validPurchase
+    /** Default constructor, initializes inventory, balance, vending balance, and validPurchase
      */
     public VendingMachine(){
 
         inventory = new ArrayList<>();
         balance = new Coin();
+        vending_balance = 0;
         validPurchase = false;
     }
 
@@ -66,11 +70,11 @@ public class VendingMachine {
      * @param n choice of coin value
      */
     public void insertCoin(String n){
+        vending_balance += balance.getBalance();
         balance.setBalance(n);           // adds to balance
-
     }
 
-    /** Gets total balance
+    /** Gets total balance, copies into vending_balance
      * @return total balance
      */
     public double getBalance(){
@@ -89,8 +93,9 @@ public class VendingMachine {
      */
     public boolean buyItem(Product n){
 
-        if (balance.buyItem(n.getPrice()) == true & n.getQuantity() != 0) {
+        if (balance.buyItem(n.getPrice()) == true & n.getQuantity() != 0 & vending_balance != 0) {
             validPurchase = true;   // valid purchase was made
+            vending_balance = 0;    // resets vending balance to 0
             n.setQuantity();    // product quantity is -1
             return true;
         }

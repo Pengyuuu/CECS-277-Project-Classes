@@ -1,6 +1,6 @@
 /** @authors Eric Truong, Erina Lara
  * Date: March 3, 2020
- * Purpose: Program creates a vending machine, using a class of coins and a subclass of product.
+ * Purpose: Program creates a vending machine, using a class of coins and a class of product.
  * Inputs: User choice for option, choice for a product to be bought, choice of product name
  *         price, and quantity, and choice for coin inserted.
  * Outputs: Vending Machine options, inventory list of products, list of coin options to be inserted,
