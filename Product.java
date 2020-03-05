@@ -36,7 +36,7 @@ public class Product extends VendingMachine{
 
     public void setQuantity(){
 
-        quantity -= 1;
+        quantity --;
     }
 
     public double getPrice(){

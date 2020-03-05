@@ -19,7 +19,7 @@ public class Tester {
 
             if (choice.equals("s") || choice.equals("S")) {
 
-                if (box.getInventorySize() == 0){
+                if (box.showInventory() == false){
 
                     System.out.println("No items in machine, please add products. ");
                 }
@@ -27,12 +27,11 @@ public class Tester {
                 else {
 
                     for (int i = 0; i < box.getInventorySize(); i++) {
-
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
                 }
-
             }
+
             else if (choice.equals("i") || choice.equals("I")) {
 
                 System.out.println("A) nickel @ 0.05 \nB) dime @ 0.10 \nC) quarter @ 0.25 \nD) dollar @ 1.00");
@@ -52,7 +51,6 @@ public class Tester {
                 else {
 
                     for (int i = 0; i < box.getInventorySize(); i++){
-
                         System.out.println((i + 1) + ". " + box.getProduct(i));
                     }
 
@@ -69,7 +67,6 @@ public class Tester {
 
                         System.out.println("Insufficient funds. ");
 
-                        //box.setBalance();
                     }
                 }
             }
@@ -89,13 +86,21 @@ public class Tester {
             }
 
             else if (choice.equals("R") || choice.equals("r")){
-                //if (box.buyItem())
-                System.out.println("Removed: " + box.getBalance());
-                box.setBalance();
+
+                double removeCoins = box.removeBalance();
+
+                if (removeCoins != 0.0) {
+                    System.out.println("Removed: $" + removeCoins);
+                    box.setBalance();
+                }
+                else {
+                    System.out.println("Removed: $" + removeCoins);
+                }
+
             }
 
             else if (choice.equals("Q") || choice.equals("q")){
-                System.out.println(box.toString());
+                System.out.println("Vending Machine exited. ");
                 goMachine = false;
             }
         }
