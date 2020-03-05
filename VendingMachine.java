@@ -70,6 +70,7 @@ public class VendingMachine {
      * @param n choice of coin value
      */
     public void insertCoin(String n){
+        balance.setBalance(n);
         vending_balance += balance.getBalance();
         balance.setBalance(n);           // adds to balance
     }
